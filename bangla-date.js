@@ -203,8 +203,7 @@
     }
     
     String.prototype.convertDigitToBangla = function() {
-      var convertToBanglaDigit;
-      convertToBanglaDigit = {'1': '১', '2': '২', '3': '৩', '4' : '৪', '5' : '৫', '6' : '৬', '7' : '৭', '8' : '৮', '9' : '৯',  '0' : '০'};
+      var convertToBanglaDigit = {'1': '১', '2': '২', '3': '৩', '4' : '৪', '5' : '৫', '6' : '৬', '7' : '৭', '8' : '৮', '9' : '৯',  '0' : '০'};
     
       return this.replace(/[1234567890]/g, function(match) {
         return convertToBanglaDigit[match];
