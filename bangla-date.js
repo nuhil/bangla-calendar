@@ -202,7 +202,7 @@
         }
     }
     
-    String.prototype.htmlProtect = function() {
+    String.prototype.convertDigitToBangla = function() {
       var covertToBanglaDigit;
       covertToBanglaDigit = {'1': '১', '2': '২', '3': '৩', '4' : '৪', '5' : '৫', '6' : '৬', '7' : '৭', '8' : '৮', '9' : '৯',  '0' : '০'};
     
@@ -211,4 +211,4 @@
       });
     };
 
-    document.getElementById("bangla-date").innerHTML = (date.toString().htmlProtect() + " " + month + ", " + getBanglaYear().toString().htmlProtect());
+    document.getElementById("bangla-date").innerHTML = (date.toString().convertDigitToBangla() + " " + month + ", " + getBanglaYear().toString().convertDigitToBangla());
