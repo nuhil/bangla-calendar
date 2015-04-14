@@ -1,9 +1,3 @@
-    // শুভ নববর্ষ ১৪২২
-    // Original Author: Nuhil Mehdy <nuhil@nuhil.net>
-    // fb.com/nuhil
-    // returns Todays date in Bengali
-    // Updated by Ujjal Suttra Dhar <self@ujjal.net>
-
     var timeStamp = new Date();
 
     function getBanglaDateAndMonth() {
