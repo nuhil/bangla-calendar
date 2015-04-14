@@ -3,7 +3,6 @@
 // fb.com/nuhil
 // returns Todays date in Bengali
 // Updated by Ujjal Suttra Dhar <self@ujjal.net>
-
 getDateinBangla();
 
 function getDateinBangla() {
@@ -189,7 +188,7 @@ function getDateinBangla() {
     }
 
     // Returns Bangla Year Based on Current english year
-    // Assumptions: Months starts from 0 to 11 and Months starts from 0 to 30
+    // Assumptions: Months starts from 0 to 11, Date starts from 0 to 30 And Hours 1 to 24
     function getBanglaYear() {
 
         if (engMonth >= 3) {
@@ -197,10 +196,15 @@ function getDateinBangla() {
             if (engMonth == 3 && engDate < 13) {
                 // Before 14th April
                 return (year - 594);
-            } else {
-                //After 14th April
+            } else if (engMonth == 3 && engDate == 13) {
+                //At 14th April
+                if (engHours < 6) // Before Sunrise
+                    return (year - 594);
+                else if (engHours >= 6) // After Sunrise
+                    return (year - 593);
+            } else
                 return (year - 593);
-            }
+
         } else {
             //Before Month April
             return (year - 594);
@@ -224,39 +228,8 @@ function convertToBangla(banglaYear) {
 
 
 function changeCharToBangla(bangla) {
-
-    switch (bangla) {
-        case '0':
-            return '০';
-            break;
-        case '1':
-            return '১';
-            break;
-        case '2':
-            return '২';
-            break;
-        case '3':
-            return '৩';
-            break;
-        case '4':
-            return '৪';
-            break;
-        case '5':
-            return '৫';
-            break;
-        case '6':
-            return '৬';
-            break;
-        case '7':
-            return '৭';
-            break;
-        case '8':
-            return '৮';
-            break;
-        case '9':
-            return '৯';
-            break;
-        default:
-            return bangla;
-    }
+    var englishNumberSet = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+    var banglaNumberSet = ['০', '১', '২', '৩', '৪', '৫', '৬', '৭', '৮', '৯'];
+    var index = englishNumberSet.indexOf(bangla);
+    return bangla.replace(bangla, banglaNumberSet[index]);
 }
