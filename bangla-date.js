@@ -15,49 +15,49 @@
             case 0:
                 if (date >= 1 && date <= 13) {
                     date += (hours < 6) ? 16 : 17;
-                    month = "অগ্রহায়ণ";
+                    month = "পৌষ";
                 } else {
                     if (date == 14 && hours < 6) {
                         date += 16;
-                        month = "অগ্রহায়ণ";
+                        month = "পৌষ";
                     } else {
                         date -= (hours < 6) ? 14 : 13;
-                        month = "পৌষ";
+                        month = "মাঘ";
                     }
                 }
                 break;
             case 1:
                 if (date >= 1 && date <= 12) {
                     date += (hours < 6) ? 17 : 18;
-                    month = month = "পৌষ";
+                    month = "মাঘ";
                 } else {
                     if (date == 13 && hours < 6) {
                         date += 17;
-                        month = "পৌষ";
+                        month = "মাঘ";
                     } else {
                         date -= (hours < 6) ? 13 : 12;
-                        month = "মাঘ";
+                        month = "ফাল্গুন";
                     }
                 }
                 break;
             case 2:
                 if (date >= 1 && date <= 14) {
                     date += (hours < 6) ? (isLeapYear() ? 16 : 15) : (isLeapYear() ? 17 : 16);
-                    month = month = "মাঘ";
+                    month = "ফাল্গুন";
                 } else {
                     if (date == 15 && hours < 6) {
                         date += (isLeapYear() ? 16 : 15);
-                        month = "মাঘ";
+                        month = "ফাল্গুন";
                     } else {
                         date -= (hours < 6) ? 15 : 14;
-                        month = "ফাল্গুন";
+                        month = "চৈত্র";
                     }
                 }
                 break;
             case 3:
                 if (date >= 1 && date <= 13) {
                     date += (hours < 6) ? 16 : 17;
-                    month = month = "চৈত্র";
+                    month = "চৈত্র";
                 } else {
                     if (date == 14 && hours < 6) {
                         date += 16;
