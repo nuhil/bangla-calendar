@@ -5,12 +5,12 @@
     // Updated by Ujjal Suttra Dhar <self@ujjal.net>
 
     var timeStamp = new Date();
-    var hours = timeStamp.getHours();
-    var date = engDate = timeStamp.getDate();
-    var month = engMonth = timeStamp.getMonth();
-    var year = timeStamp.getFullYear();
 
-    function getBanglaDayAndMonth() {
+    function getBanglaDateAndMonth() {
+        var hours = timeStamp.getHours();
+        var date = timeStamp.getDate();
+        var month = timeStamp.getMonth();        
+        
         switch (month) {
             case 0:
                 if (date >= 1 && date <= 13) {
@@ -181,6 +181,8 @@
                 }
                 break;
         }
+        
+        return {"date" : date, "month" : month};
     }
 
     function isLeapYear() {
@@ -188,10 +190,15 @@
     }
 
     function getBanglaYear() {
-        if (engMonth >= 3) {
-            if (engMonth == 3 && engDate < 13) {
+        var hours = timeStamp.getHours();
+        var date = timeStamp.getDate();
+        var month = timeStamp.getMonth();
+        var year = timeStamp.getFullYear();
+        
+        if (month >= 3) {
+            if (month == 3 && date < 13) {
                 return (year - 594);
-            } else if (engMonth == 3 && engDate == 13) {
+            } else if (month == 3 && date == 13) {
                 if (hours < 6)
                     return (year - 594);
                 else if (hours >= 6)
@@ -211,6 +218,4 @@
       });
     };
 
-    getBanglaDayAndMonth();
-
-    document.getElementById("bangla-date").innerHTML = (date.toString().convertDigitToBangla() + " " + month + ", " + getBanglaYear().toString().convertDigitToBangla());
+    document.getElementById("bangla-date").innerHTML = (getBanglaDateAndMonth().date.toString().convertDigitToBangla() + " " + getBanglaDateAndMonth().month + ", " + getBanglaYear().toString().convertDigitToBangla());
