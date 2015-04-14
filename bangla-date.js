@@ -1,11 +1,9 @@
-// শুভ নববর্ষ ১৪২২
-// Original Author: Nuhil Mehdy <nuhil@nuhil.net>
-// fb.com/nuhil
-// returns Todays date in Bengali
-// Updated by Ujjal Suttra Dhar <self@ujjal.net>
-getDateinBangla();
+    // শুভ নববর্ষ ১৪২২
+    // Original Author: Nuhil Mehdy <nuhil@nuhil.net>
+    // fb.com/nuhil
+    // returns Todays date in Bengali
+    // Updated by Ujjal Suttra Dhar <self@ujjal.net>
 
-function getDateinBangla() {
     var timeStamp = new Date();
     var hours = engHours = timeStamp.getHours();
     var date = engDate = timeStamp.getDate();
@@ -187,49 +185,30 @@ function getDateinBangla() {
         return ((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0);
     }
 
-    // Returns Bangla Year Based on Current english year
-    // Assumptions: Months starts from 0 to 11, Date starts from 0 to 30 And Hours 1 to 24
     function getBanglaYear() {
-
         if (engMonth >= 3) {
-            //From April
             if (engMonth == 3 && engDate < 13) {
-                // Before 14th April
                 return (year - 594);
             } else if (engMonth == 3 && engDate == 13) {
-                //At 14th April
-                if (engHours < 6) // Before Sunrise
+                if (engHours < 6)
                     return (year - 594);
-                else if (engHours >= 6) // After Sunrise
+                else if (engHours >= 6)
                     return (year - 593);
             } else
                 return (year - 593);
 
         } else {
-            //Before Month April
             return (year - 594);
         }
     }
+    
+    String.prototype.htmlProtect = function() {
+      var covertToBanglaDigit;
+      covertToBanglaDigit = {'1': '১', '2': '২', '3': '৩', '4' : '৪', '5' : '৫', '6' : '৬', '7' : '৭', '8' : '৮', '9' : '৯',  '0' : '০'};
+    
+      return this.replace(/[1234567890]/g, function(match) {
+        return covertToBanglaDigit[match];
+      });
+    };
 
-    document.getElementById("bangla-date").innerHTML = (date.toLocaleString('bn-BD') + " " + month + ", " + convertToBangla(getBanglaYear()));
-
-}
-
-function convertToBangla(banglaYear) {
-
-    banglaYear = banglaYear.toString();
-    var res = "";
-
-    for (var i = 0; i < banglaYear.length; i++)
-        res += changeCharToBangla(banglaYear.charAt(i));
-
-    return res;
-}
-
-
-function changeCharToBangla(bangla) {
-    var englishNumberSet = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
-    var banglaNumberSet = ['০', '১', '২', '৩', '৪', '৫', '৬', '৭', '৮', '৯'];
-    var index = englishNumberSet.indexOf(bangla);
-    return bangla.replace(bangla, banglaNumberSet[index]);
-}
+    document.getElementById("bangla-date").innerHTML = (date.toString().htmlProtect() + " " + month + ", " + getBanglaYear().toString().htmlProtect());
