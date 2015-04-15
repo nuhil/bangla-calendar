@@ -2,10 +2,18 @@
 <html lang="en">
 <head>
    <meta charset="utf-8">
-   <title>Bangla Calendar Based on Gregorian</title>
+   <title>Bangla calendar based date plugin</title>
 </head>
 <body>
-<h1 id="bangla-date"></h1>
-<script src="bangla-date.js"></script>
+	<h1 class="bongabdo"></h1>
+	<span class="bongabdo"></span>
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script src="jquery.bongabdo.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('.bongabdo').bongabdo();
+		});
+	</script>
 </body>
 </html>
