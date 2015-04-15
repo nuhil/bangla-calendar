@@ -1,2 +1,2 @@
-# jQuery plugin to display Time-Stamp, based on Bangla Calendar   
-```gh-pages``` is the default branch of this repository. It helps to deliver the [demonstration page] (http://nuhil.github.io/bangla-calendar/) to public.   
+# বঙ্গাব্দ - jQuery plugin to display Time-Stamp, based on Bangla Calendar   
+Checkout the [plugin home page] (http://nuhil.github.io/bangla-calendar/)   

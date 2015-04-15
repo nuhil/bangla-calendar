@@ -67,3 +67,7 @@ pre, xmp, code {
 .button:active {
 	background: #F6A953;
 }
+
+p.social-share {
+	text-align: center;
+}
