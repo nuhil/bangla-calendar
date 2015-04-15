@@ -1,0 +1,37 @@
+{
+	"name": "bongabdo",
+	"title": "Bongabdo jQuery Plugin",
+	"description": "jQuery plugin to display Time-Stamp, based on Bangla Calendar",
+	"keywords": [
+		"bangla", "bangla-calendar", "bongabdo", "bangla-date"
+	],
+	"version": "0.0.1",
+	"author": {
+		"name": "Nuhil Mehdy",
+		"url": "http://nuhil.net/"
+	},
+	"maintainers": [
+	{
+		"name": "Ujjal Suttra Dhar",
+		"email": "usuttra@yahoo.com",
+		"url": "http://ujjal.net"
+	},
+	{
+		"name": "Md. Zakir Hossain",
+		"email": "zakirdaq@yahoo.com",
+		"url": "http://zakirdaq.wordpress.com/"
+	}
+	],
+	"licenses": [
+	{
+		"type": "MIT",
+		"url": "https://raw.githubusercontent.com/nuhil/bangla-calendar/master/LICENSE"
+	}
+	],
+	"bugs": "https://github.com/nuhil/bangla-calendar/issues",
+	"homepage": "http://nuhil.github.io/bangla-calendar/example/",
+	"docs": "http://nuhil.github.io/bangla-calendar/example/",
+	"dependencies": {
+		"jquery": ">=1.7"
+	}
+}
