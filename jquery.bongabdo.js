@@ -176,8 +176,22 @@
 
         this.filter( ".bongabdo" ).each(function() {
             var element = $( this );
-            element.html(getBanglaDateAndMonth().date.toString().convertDigitToBangla() + " " + getBanglaDateAndMonth().month + ", " + getBanglaDateAndMonth().year.toString().convertDigitToBangla());
-        });
+            var day = getBanglaDateAndMonth().date;
+            var modifier = "";
+            
+            if(day == 1)
+                modifier = "লা";
+            else if(day == 2 || day == 3)
+                modifier = "রা";
+            else if(day == 4)
+                modifier = "ঠা";
+            else if(day >= 5 && day <= 18)
+                modifier = "ইা";
+            else // 19 - 31th day
+                modifier = "শে";
+            
+            element.html(day.toString().convertDigitToBangla() + modifier + " " + getBanglaDateAndMonth().month + ", " + getBanglaDateAndMonth().year.toString().convertDigitToBangla());
+            });
  
         return this;
     };
