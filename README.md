@@ -1,4 +1,2 @@
-# bangla-calendar
-Javascript based Bangla calendar script. Base of further JQuery plugin   
-
-Click to see a [Demo](http://jsfiddle.net/nuhil/7mbrt8v7/)
+# jQuery plugin to display Time-Stamp, based on Bangla Calendar   
+```gh-pages``` is the default branch of this repository. It helps to deliver the [demonstration page] (http://nuhil.github.io/bangla-calendar/) to public.   
