@@ -2,11 +2,66 @@
 <html lang="en">
 <head>
    <meta charset="utf-8">
-   <title>Bangla calendar based date plugin</title>
+   <meta name="author" content="Nuhil Mehdy">
+   <title>বঙ্গাব্দ - jQuery plugin to display Time-Stamp, based on Bangla Calendar</title>
+
+	<link rel="stylesheet" href="reset.css">
+	<link rel="stylesheet" href="style.css">
+
+	<!--[if lt IE 9]>
+		<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->   
 </head>
 <body>
-	<h1 class="bongabdo"></h1>
-	<span class="bongabdo"></span>
+
+	<div class="container">
+		<h1>বঙ্গাব্দ - jQuery Plugin</h1>
+		<p>
+			ওপেন সোর্স jQuery Plugin যেটা ব্যবহার করে আপনি ওয়েব পেজের যেকোনো স্থানে বাংলা ক্যালেন্ডার মোতাবেক আজকের বা নির্দিষ্ট কোন দিন/তারিখ ডিসপ্লে করতে পারবেন। গ্রেগরিয়ান ক্যালেন্ডার এর উপর ভিত্তি করে এবং <a href="http://en.wikipedia.org/wiki/Bengali_calendar" target="_blank">উইকিপিডিয়ার তথ্য সূত্র</a> মোতাবেক দিন/তারিখ রূপান্তরের প্রোগ্রামিং লজিক করা হয়েছে।
+		</p>
+
+		<div class="buttons">
+			<a href="https://raw.githubusercontent.com/nuhil/bangla-calendar/gh-pages/jquery.bongabdo.js" class="button left">সোর্স কোড</a>
+			<a href="https://github.com/nuhil/bangla-calendar/archive/master.zip" class="button download left" target="_blank">উদাহরণ সহ ডাউনলোড</a>
+		</div>
+
+		<p class="clear">যেকোনো HTML এলিমেন্টের মধ্যে খুব সহজেই বাংলা দিন/তারিখ দেখাতে নিচের মত করে এই প্লাগিনকে ইনিসিয়ালাইজ করতে হবে</p>
+		<pre>$('element').bongabdo();</pre>
+
+		<p>যদি আপনার ওয়েব পেজের মধ্যে নিচের মত এক বা একাধিক এলিমেন্ট থাকে,</p>
+		<xmp><h1 class="bongabdo">...</h1></xmp>
+
+		<p>তাহলে উপরোক্ত এলিমেন্ট গুলোর মধ্যে বাংলা তারিখ দেখানোর জন্য একটি পূর্ণ উদাহরণ হতে পারে নিচের মত করে। অর্থাৎ প্রথমে jQuery সংযুক্ত করুন, তারপর এই প্লাগিনকে সংযুক্ত করুন, তারপর ইনিসিয়ালাইজ করুন।</p>
+
+		<p>
+			<script src="https://gist.github.com/nuhil/e2b89c320fa5f38d5a6a.js"></script>
+		</p>
+		<p>এতে করে আপনি নিচের মত আউটপুট পাবেন</p>
+		<p><h1 class="bongabdo">...</h1></p>
+		<p>ভবিষ্যতে যে অপশনগুলো যুক্ত হতে যাচ্ছে সেগুলো হল, আপনি প্লাগিন ইনিসিয়ালাইজ করার সময়ই ভাষা, দিনের শুরুর সময় এবং ঋতুর নাম সহ বা ছাড়া দিন/তারিখ দেখানোর অপশন সেট করতে পারবেন নিচের মত করে।</p>
+		
+<xmp>$('.bongabdo').bongabdo({
+	displayLanguage: "english",
+	dayStartsAt: "midnight",
+	showSeason: true
+});
+</xmp>
+
+	<p>
+		<span class='st_fblike_hcount' displayText='Facebook Like'></span>
+		<span class='st_facebook_hcount' displayText='Facebook'></span>
+		<span class='st_twitter_hcount' displayText='Tweet'></span>
+		<span class='st_linkedin_hcount' displayText='LinkedIn'></span>
+		<span class='st_pinterest_hcount' displayText='Pinterest'></span>
+	</p>
+	<br/>
+        
+	</div>
+
+	<a href="https://github.com/voronianski/jquery.avgrund.js" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png" alt="Fork me on GitHub"></a>
+
+	<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+	<script type="text/javascript">stLight.options({publisher: "caa1b52e-e3f3-4473-b61a-7a5d70f5e357", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
 
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<script src="jquery.bongabdo.js"></script>
