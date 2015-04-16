@@ -21,7 +21,7 @@
             var year = timeStamp.getFullYear();     
             
             if (month >= 3) {
-                if (month == 3 && date < 13)
+                if (month == 3 && date <= 13)
                     year = (year - 594);
                 else
                     year = (year - 593);
