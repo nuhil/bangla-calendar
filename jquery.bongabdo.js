@@ -59,103 +59,103 @@
                     month = "চৈত্র";
                 }
                 break;
-                case 3:
-                    if (date >= 1 && date <= 13) {
-                        date += 17;
-                        month = month = "চৈত্র";
-                    } else {
-                            date -= 13;
-                            month = "বৈশাখ";
-                    }
-                    break;
-                case 4:
-                    if (date >= 1 && date <= 14) {
-                        date += 17;
+            case 3:
+                if (date >= 1 && date <= 13) {
+                    date += 17;
+                    month = month = "চৈত্র";
+                } else {
+                        date -= 13;
                         month = "বৈশাখ";
-                    } else {
+                }
+                break;
+            case 4:
+                if (date >= 1 && date <= 14) {
+                    date += 17;
+                    month = "বৈশাখ";
+                } else {
 
-                            date -= 14;
-                            month = "জ্যৈষ্ঠ";
-
-                    }
-                    break;
-                case 5:
-                    if (date >= 1 && date <= 14) {
-                        date += 17;
+                        date -= 14;
                         month = "জ্যৈষ্ঠ";
-                    } else {
 
-                            date -= 14;
-                            month = "আষাঢ়";
+                }
+                break;
+            case 5:
+                if (date >= 1 && date <= 14) {
+                    date += 17;
+                    month = "জ্যৈষ্ঠ";
+                } else {
 
-                    }
-                    break;
-                case 6:
-                    if (date >= 1 && date <= 15) {
-                        date += 16;
+                        date -= 14;
                         month = "আষাঢ়";
-                    } else {
 
-                            date -= 15;
-                            month = "শ্রাবণ";
+                }
+                break;
+            case 6:
+                if (date >= 1 && date <= 15) {
+                    date += 16;
+                    month = "আষাঢ়";
+                } else {
 
-                    }
-                    break;
-                case 7:
-                    if (date >= 1 && date <= 15) {
-                        date +=  16;
+                        date -= 15;
                         month = "শ্রাবণ";
-                    } else {
 
-                            date -=  15;
-                            month = "ভাদ্র";
+                }
+                break;
+            case 7:
+                if (date >= 1 && date <= 15) {
+                    date +=  16;
+                    month = "শ্রাবণ";
+                } else {
 
-                    }
-                    break;
-                case 8:
-                    if (date >= 1 && date <= 15) {
-                        date +=  16;
+                        date -=  15;
                         month = "ভাদ্র";
-                    } else {
 
-                            date -=  15;
-                            month = "আশ্বিন";
-                        
-                    }
-                    break;
-                case 9:
-                    if (date >= 1 && date <= 15) {
-                        date += 15;
+                }
+                break;
+            case 8:
+                if (date >= 1 && date <= 15) {
+                    date +=  16;
+                    month = "ভাদ্র";
+                } else {
+
+                        date -=  15;
                         month = "আশ্বিন";
-                    } else {
+                    
+                }
+                break;
+            case 9:
+                if (date >= 1 && date <= 15) {
+                    date += 15;
+                    month = "আশ্বিন";
+                } else {
 
-                            date -= 15;
-                            month = "কার্তিক";
-                        
-                    }
-                    break;
-                case 10:
-                    if (date >= 1 && date <= 14) {
-                        date += 16;
+                        date -= 15;
                         month = "কার্তিক";
-                    } else {
+                    
+                }
+                break;
+            case 10:
+                if (date >= 1 && date <= 14) {
+                    date += 16;
+                    month = "কার্তিক";
+                } else {
 
-                            date -= 14;
-                            month = "অগ্রহায়ণ";
-                        
-                    }
-                    break;
-                case 11:
-                    if (date >= 1 && date <= 14) {
-                        date += 16;
+                        date -= 14;
                         month = "অগ্রহায়ণ";
-                    } else {
+                    
+                }
+                break;
+            case 11:
+                if (date >= 1 && date <= 14) {
+                    date += 16;
+                    month = "অগ্রহায়ণ";
+                } else {
 
-                            date -= 14;
-                            month = "পৌষ";
-                        
-                    }
-                    break;
+                        date -= 14;
+                        month = "পৌষ";
+                    
+                }
+                break;
             }
             
             return {"year" : year, "date" : date, "month" : month};
