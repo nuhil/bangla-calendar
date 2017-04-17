@@ -1,185 +1,91 @@
-(function ( $ ) { 
-    $.fn.bongabdo = function( options ) {
-        // To Do: Use the options to re-fromat return value
-        var settings = $.extend({
-            displayLanguage: "bangla",
-            dayStartsAt: "sunrise",
-            showSeason: true
-        }, options );
-    
-        Date.prototype.addHours = function(h){
-            this.setHours(this.getHours()+h);
-            return this;
-        }
+(function($) {
+	$.fn.bongabdo = function(options) {
+		// To Do: Use the options to re-format return value
+		var settings = $.extend({
+			displayLanguage: "bangla",
+			dayStartsAt: "sunrise",
+			showSeason: false
+		}, options);
 
-        var timeStamp = new Date().addHours(-6);
+		var banglaMonthsList = ["পৌষ", "মাঘ", "ফাল্গুন", "চৈত্র", "বৈশাখ", "জ্যৈষ্ঠ", "আষাঢ়", "শ্রাবণ", "ভাদ্র", "আশ্বিন", "কার্তিক", "অগ্রহায়ণ"];
+		var midMonthDate = [13, 12, 14, 13, 14, 14, 15, 15, 15, 15, 14, 14];
+		var totalMonthDays = [30, 30, 30, 30, 31, 31, 31, 31, 31, 30, 30, 30];
+		var leapYearIndex = 2; //Leap Year will affect only the day count in 'Falgun'
+		var lastMonthIndex = 3; //'Chaitro' is the last month and it's index is 3 in banglaMonthsList
 
-        function getBanglaDateAndMonth() {
-            var hours = timeStamp.getHours();
-            var date = timeStamp.getDate();
-            var month = timeStamp.getMonth(); 
-            var year = timeStamp.getFullYear();     
-            
-            if (month >= 3) {
-                if (month == 3 && date <= 13)
-                    year = (year - 594);
-                else
-                    year = (year - 593);
-            } else {
-                year = (year - 594);
-            }
+		Date.prototype.addHours = function(h) {
+			this.setHours(this.getHours() + h);
+			return this;
+		}
 
-            switch (month) {
-            case 0:
-                if (date >= 1 && date <= 13) {
-                    date += 17;
-                    month = "পৌষ";
-                }
-                else {
-                    date -= 13;
-                    month = "মাঘ";
-                }
-                break;
-            case 1:
-                if (date >= 1 && date <= 12) {
-                    date += 18;
-                    month = month = "মাঘ";
-                } 
-                else {
-                    date -= 12;
-                    month = "ফাল্গুন";
-                }
-                break;
-            case 2:
-                if (date >= 1 && date <= 14) {
-                    date += isLeapYear() ? 17 : 16;
-                    month = month = "ফাল্গুন";
-                } else {
-                    date -= 14;
-                    month = "চৈত্র";
-                }
-                break;
-            case 3:
-                if (date >= 1 && date <= 13) {
-                    date += 17;
-                    month = month = "চৈত্র";
-                } else {
-                        date -= 13;
-                        month = "বৈশাখ";
-                }
-                break;
-            case 4:
-                if (date >= 1 && date <= 14) {
-                    date += 17;
-                    month = "বৈশাখ";
-                } else {
+		function isLeapYear(year) {
+			return ((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0);
+		}
 
-                        date -= 14;
-                        month = "জ্যৈষ্ঠ";
+		//Bangla Year Calculation with respect to Gregorian Year
+		function getBanglaYear(month, date, year) {
+			var banglaYear = year - 594; //2017(Gregorian Year) - 594 = 1423(Bangla Year)
+			//if the month is after 'chaitro' then it is a bangla new year, hence the year count will be one more
+			if ((month > lastMonthIndex) || (month == lastMonthIndex && date > midMonthDate[lastMonthIndex]))
+				banglaYear = year - 593;
 
-                }
-                break;
-            case 5:
-                if (date >= 1 && date <= 14) {
-                    date += 17;
-                    month = "জ্যৈষ্ঠ";
-                } else {
+			return banglaYear;
+		}
 
-                        date -= 14;
-                        month = "আষাঢ়";
+		function getBanglaDateAndMonth() {
+			var timeStamp = new Date().addHours(-6);
+			//Year, Date, Month for Gregorian/English Calendar
+			var gregDate = timeStamp.getDate(),
+				gregMonth = timeStamp.getMonth(),
+				gregYear = timeStamp.getFullYear();
 
-                }
-                break;
-            case 6:
-                if (date >= 1 && date <= 15) {
-                    date += 16;
-                    month = "আষাঢ়";
-                } else {
+			var banglaYear, banglaMonth, banglaDate;
 
-                        date -= 15;
-                        month = "শ্রাবণ";
+			banglaYear = getBanglaYear(gregMonth, gregDate, gregYear);
 
-                }
-                break;
-            case 7:
-                if (date >= 1 && date <= 15) {
-                    date +=  16;
-                    month = "শ্রাবণ";
-                } else {
+			if (gregDate <= midMonthDate[gregMonth]) {
+				var monthDays = ((gregMonth == leapYearIndex) && isLeapYear(gregYear)) ? totalMonthDays[gregMonth] + 1 : totalMonthDays[gregMonth]; //In a leap year, for 'Falgun' month total number of Month Days will be 31 instead of 30
+				banglaDate = monthDays + gregDate - midMonthDate[gregMonth];
+				banglaMonth = banglaMonthsList[gregMonth];
+			} else {
+				banglaDate = gregDate - midMonthDate[gregMonth];
+				banglaMonth = banglaMonthsList[(gregMonth + 1) % 12]; //banglaMonthsList is 0-based indexed
+			}
 
-                        date -=  15;
-                        month = "ভাদ্র";
+			return {
+				"year": banglaYear,
+				"date": banglaDate,
+				"month": banglaMonth
+			};
 
-                }
-                break;
-            case 8:
-                if (date >= 1 && date <= 15) {
-                    date +=  16;
-                    month = "ভাদ্র";
-                } else {
+		}
 
-                        date -=  15;
-                        month = "আশ্বিন";
-                    
-                }
-                break;
-            case 9:
-                if (date >= 1 && date <= 15) {
-                    date += 15;
-                    month = "আশ্বিন";
-                } else {
+		String.prototype.convertDigitToBangla = function() {
+			var convertToBanglaDigit = {
+				'1': '১',
+				'2': '২',
+				'3': '৩',
+				'4': '৪',
+				'5': '৫',
+				'6': '৬',
+				'7': '৭',
+				'8': '৮',
+				'9': '৯',
+				'0': '০'
+			};
 
-                        date -= 15;
-                        month = "কার্তিক";
-                    
-                }
-                break;
-            case 10:
-                if (date >= 1 && date <= 14) {
-                    date += 16;
-                    month = "কার্তিক";
-                } else {
+			return this.replace(/\d/g, function(match) {
+				return convertToBanglaDigit[match];
+			});
+		};
 
-                        date -= 14;
-                        month = "অগ্রহায়ণ";
-                    
-                }
-                break;
-            case 11:
-                if (date >= 1 && date <= 14) {
-                    date += 16;
-                    month = "অগ্রহায়ণ";
-                } else {
+		this.filter(".bongabdo").each(function() {
+			var element = $(this);
+			var dateString = getBanglaDateAndMonth().date.toString() + " " + getBanglaDateAndMonth().month + ", " + getBanglaDateAndMonth().year.toString();
+			element.html(dateString.convertDigitToBangla());
+		});
 
-                        date -= 14;
-                        month = "পৌষ";
-                    
-                }
-                break;
-            }
-            
-            return {"year" : year, "date" : date, "month" : month};
-        }
+		return this;
+	};
 
-        function isLeapYear() {
-            var year = timeStamp.getFullYear(); 
-            return ((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0);
-        }
-        
-        String.prototype.convertDigitToBangla = function() {
-          var convertToBanglaDigit = {'1': '১', '2': '২', '3': '৩', '4' : '৪', '5' : '৫', '6' : '৬', '7' : '৭', '8' : '৮', '9' : '৯',  '0' : '০'};
-        
-          return this.replace(/[1234567890]/g, function(match) {
-            return convertToBanglaDigit[match];
-          });
-        };
-
-        this.filter( ".bongabdo" ).each(function() {
-            var element = $( this );
-            element.html(getBanglaDateAndMonth().date.toString().convertDigitToBangla() + " " + getBanglaDateAndMonth().month + ", " + getBanglaDateAndMonth().year.toString().convertDigitToBangla());
-        });
- 
-        return this;
-    };
- 
-}( jQuery ));
+}(jQuery));
