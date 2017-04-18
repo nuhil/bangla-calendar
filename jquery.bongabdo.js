@@ -4,10 +4,12 @@
 		var settings = $.extend({
 			displayLanguage: "bangla",
 			dayStartsAt: "sunrise",
-			showSeason: false
+			showSeason: false,
+			showWeekDays: false
 		}, options);
 
 		var banglaMonthsList = ["পৌষ", "মাঘ", "ফাল্গুন", "চৈত্র", "বৈশাখ", "জ্যৈষ্ঠ", "আষাঢ়", "শ্রাবণ", "ভাদ্র", "আশ্বিন", "কার্তিক", "অগ্রহায়ণ"];
+		var weekDaysList = ["রবিবার", "সোমবার", "মঙ্গলবার", "বুধবার", "বৃহস্পতিবার", "শুক্রবার", "শনিবার"];
 		var midMonthDate = [13, 12, 14, 13, 14, 14, 15, 15, 15, 15, 14, 14];
 		var totalMonthDays = [30, 30, 30, 30, 31, 31, 31, 31, 31, 30, 30, 30];
 		var leapYearIndex = 2; //Leap Year will affect only the day count in 'Falgun'
@@ -37,7 +39,8 @@
 			//Year, Date, Month for Gregorian/English Calendar
 			var gregDate = timeStamp.getDate(),
 				gregMonth = timeStamp.getMonth(),
-				gregYear = timeStamp.getFullYear();
+				gregYear = timeStamp.getFullYear(),
+				gregDay = timeStamp.getDay();
 
 			var banglaYear, banglaMonth, banglaDate;
 
@@ -55,7 +58,8 @@
 			return {
 				"year": banglaYear,
 				"date": banglaDate,
-				"month": banglaMonth
+				"month": banglaMonth,
+				"day": weekDaysList[gregDay]
 			};
 
 		}
@@ -81,7 +85,13 @@
 
 		this.filter(".bongabdo").each(function() {
 			var element = $(this);
-			var dateString = getBanglaDateAndMonth().date.toString() + " " + getBanglaDateAndMonth().month + ", " + getBanglaDateAndMonth().year.toString();
+			var result = getBanglaDateAndMonth();
+			console.log(result);
+			var dateString = result.date.toString() + " " + result.month + ", " + result.year.toString();
+
+			if (settings.showWeekDays)
+				dateString += "(" + result.day + ")";
+
 			element.html(dateString.convertDigitToBangla());
 		});
 
