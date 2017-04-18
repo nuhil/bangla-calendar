@@ -8,6 +8,7 @@
 		}, options);
 
 		var banglaMonthsList = ["পৌষ", "মাঘ", "ফাল্গুন", "চৈত্র", "বৈশাখ", "জ্যৈষ্ঠ", "আষাঢ়", "শ্রাবণ", "ভাদ্র", "আশ্বিন", "কার্তিক", "অগ্রহায়ণ"];
+		var banglaSeasonsList = ["শীত", "বসন্ত", "গ্রীষ্ম", "বর্ষা", "শরৎ", "হেমন্ত"];
 		var midMonthDate = [13, 12, 14, 13, 14, 14, 15, 15, 15, 15, 14, 14];
 		var totalMonthDays = [30, 30, 30, 30, 31, 31, 31, 31, 31, 30, 30, 30];
 		var leapYearIndex = 2; //Leap Year will affect only the day count in 'Falgun'
@@ -39,25 +40,29 @@
 				gregMonth = timeStamp.getMonth(),
 				gregYear = timeStamp.getFullYear();
 
-			var banglaYear, banglaMonth, banglaDate;
+			var banglaYear, banglaMonth, banglaDate, banglaSeason, banglaMonthIndex;
 
 			banglaYear = getBanglaYear(gregMonth, gregDate, gregYear);
 
 			if (gregDate <= midMonthDate[gregMonth]) {
 				var monthDays = ((gregMonth == leapYearIndex) && isLeapYear(gregYear)) ? totalMonthDays[gregMonth] + 1 : totalMonthDays[gregMonth]; //In a leap year, for 'Falgun' month total number of Month Days will be 31 instead of 30
 				banglaDate = monthDays + gregDate - midMonthDate[gregMonth];
-				banglaMonth = banglaMonthsList[gregMonth];
+				banglaMonthIndex = gregMonth;
+				banglaMonth = banglaMonthsList[banglaMonthIndex];
 			} else {
 				banglaDate = gregDate - midMonthDate[gregMonth];
-				banglaMonth = banglaMonthsList[(gregMonth + 1) % 12]; //banglaMonthsList is 0-based indexed
+				banglaMonthIndex = (gregMonth + 1) % 12; //banglaMonthsList is 0-based indexed
+				banglaMonth = banglaMonthsList[banglaMonthIndex];
 			}
+
+			banglaSeason = banglaSeasonsList[Math.floor(banglaMonthIndex / 2)]; // ('পৌষ' + 'মাঘ') = 'শীত'. Every consecutive two index in 'banglaMonthsList' indicates a single index in 'banglaSeasonsList'.
 
 			return {
 				"year": banglaYear,
 				"date": banglaDate,
-				"month": banglaMonth
+				"month": banglaMonth,
+				"season": banglaSeason
 			};
-
 		}
 
 		String.prototype.convertDigitToBangla = function() {
@@ -81,7 +86,13 @@
 
 		this.filter(".bongabdo").each(function() {
 			var element = $(this);
-			var dateString = getBanglaDateAndMonth().date.toString() + " " + getBanglaDateAndMonth().month + ", " + getBanglaDateAndMonth().year.toString();
+			var result = getBanglaDateAndMonth();
+			console.log(result);
+			var dateString = result.date.toString() + " " + result.month + ", " + result.year.toString();
+
+			if (settings.showSeason)
+				dateString += "(" + result.season + ")";
+
 			element.html(dateString.convertDigitToBangla());
 		});
 
