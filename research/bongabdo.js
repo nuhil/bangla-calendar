@@ -21,9 +21,11 @@ function getBanglaDateAndMonth() {
 	//Year, Date, Month for Gregorian/English Calendar
 	var gregDate = timeStamp.getDate(),
 		gregMonth = timeStamp.getMonth(),
-		gregYear = timeStamp.getFullYear();
+		gregYear = timeStamp.getFullYear(),
+		gregDay = timeStamp.getDay();
 
 	var banglaMonthsList = ["পৌষ", "মাঘ", "ফাল্গুন", "চৈত্র", "বৈশাখ", "জ্যৈষ্ঠ", "আষাঢ়", "শ্রাবণ", "ভাদ্র", "আশ্বিন", "কার্তিক", "অগ্রহায়ণ"];
+	var weekDaysList = ["রবিবার", "সোমবার", "মঙ্গলবার", "বুধবার", "বৃহস্পতিবার", "শুক্রবার", "শনিবার"];
 	var banglaSeasonsList = ["শীত", "বসন্ত", "গ্রীষ্ম", "বর্ষা", "শরৎ", "হেমন্ত"];
 	var midMonthDate = [13, 12, 14, 13, 14, 14, 15, 15, 15, 15, 14, 14];
 	var totalMonthDays = [30, 30, 30, 30, 31, 31, 31, 31, 31, 30, 30, 30];
@@ -50,6 +52,7 @@ function getBanglaDateAndMonth() {
 		"year": banglaYear,
 		"date": banglaDate,
 		"month": banglaMonth,
+		"day": weekDaysList[gregDay],
 		"season": banglaSeason
 	};
 }
@@ -74,6 +77,9 @@ String.prototype.convertDigitToBangla = function() {
 };
 
 result = getBanglaDateAndMonth();
+banglaDate = result.date.toString() + " " + result.month + ", " + result.year.toString();
+
+banglaDate += "(" + result.day + ")";
 banglaDate = result.date.toString() + " " + result.month + ", " + result.year.toString() + "[" + result.season + "]";
 
 console.log(banglaDate.convertDigitToBangla());
