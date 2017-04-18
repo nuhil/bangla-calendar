@@ -39,14 +39,35 @@
 		</p>
 		<p>এতে করে আপনি নিচের মত আউটপুট পাবেন</p>
 		<p><h1 class="bongabdo">...</h1></p>
-		<p>ভবিষ্যতে যে অপশনগুলো যুক্ত হতে যাচ্ছে সেগুলো হল, আপনি প্লাগিন ইনিসিয়ালাইজ করার সময়ই ভাষা, দিনের শুরুর সময় এবং ঋতুর নাম সহ বা ছাড়া দিন/তারিখ দেখানোর অপশন সেট করতে পারবেন নিচের মত করে।</p>
 
-<xmp>$('.bongabdo').bongabdo({
-	displayLanguage: "english",
-	dayStartsAt: "midnight",
-	showSeason: true
-});
-</xmp>
+        <hr>
+
+        <h2>অপশনসমূহঃ</h2>
+		<p>প্লাগিন ইনিশিয়ালাইজ করার সময়ই নীচের অপশনগুলোর জন্য ভ্যালু দিয়ে ডিফল্ট সেটিংসে পরিবর্তন করা যাবে।</p>
+        <br/>
+
+        <h3>showSeason:</h3>
+        <p>
+            ঋতুর নাম সহ দেখাতে চাইলে <strong>showSeason</strong> এর ভ্যালু সেট করে দিন।
+        </p>
+        <xmp>
+        $('.bongabdo').bongabdo({
+        	showSeason: true
+        });
+        </xmp>
+        <p><h1 id="bongabdowithseason">...</h1></p>
+
+        <h3>showWeekDays:</h3>
+        <p>
+            সপ্তাহের বার সহ দেখাতে চাইলেে <strong>showWeekDays</strong> এর ভ্যালু সেট করে দিন।
+        </p>
+        <xmp>
+        $('.bongabdo').bongabdo({
+        	showWeekDays: true
+        });
+        </xmp>
+        <p><h1 id="bongabdowithday">...</h1></p>
+
 
 	<p class="social-share">
 		<span class='st_fblike_hcount' displayText='Facebook Like'></span>
@@ -69,6 +90,14 @@
 	<script type="text/javascript">
 		$(document).ready(function(){
 			$('.bongabdo').bongabdo();
+
+            $('#bongabdowithseason').bongabdo({
+                showSeason: true
+            });
+
+            $('#bongabdowithday').bongabdo({
+                showWeekDays: true
+            });
 		});
 	</script>
 </body>
