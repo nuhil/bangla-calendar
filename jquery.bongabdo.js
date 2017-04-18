@@ -89,16 +89,15 @@
 			});
 		};
 
-		this.filter(".bongabdo").each(function() {
+		this.each(function() {
 			var element = $(this);
 			var result = getBanglaDateAndMonth();
-			console.log(result);
 			var dateString = result.date.toString() + " " + result.month + ", " + result.year.toString();
 
 			if (settings.showWeekDays)
 				dateString += "(" + result.day + ")";
 
-      if (settings.showSeason)
+			if (settings.showSeason)
 				dateString += "(" + result.season + ")";
 
 			element.html(dateString.convertDigitToBangla());
