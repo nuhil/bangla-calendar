@@ -5,7 +5,8 @@
 			displayLanguage: "bangla",
 			dayStartsAt: "sunrise",
 			showSeason: false,
-			showWeekDays: false
+			showWeekDays: false,
+			format: "DD MM, YY"
 		}, options);
 
 		var banglaMonthsList = ["পৌষ", "মাঘ", "ফাল্গুন", "চৈত্র", "বৈশাখ", "জ্যৈষ্ঠ", "আষাঢ়", "শ্রাবণ", "ভাদ্র", "আশ্বিন", "কার্তিক", "অগ্রহায়ণ"];
@@ -92,13 +93,18 @@
 		this.each(function() {
 			var element = $(this);
 			var result = getBanglaDateAndMonth();
-			var dateString = result.date.toString() + " " + result.month + ", " + result.year.toString();
+			var dateString = settings.format;
+			dateString = dateString.replace(/DD/i, result.date.toString());
+			dateString = dateString.replace(/MM/i, result.month);
+			dateString = dateString.replace(/YY/i, result.year.toString());
 
-			if (settings.showWeekDays)
-				dateString += "(" + result.day + ")";
+			if (settings.showWeekDays) {
+				dateString = dateString.replace(/WW/i, result.day);
+			}
 
-			if (settings.showSeason)
-				dateString += "(" + result.season + ")";
+			if (settings.showSeason) {
+				dateString = dateString.replace(/SS/i, result.season);
+			}
 
 			element.html(dateString.convertDigitToBangla());
 		});
