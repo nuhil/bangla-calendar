@@ -1,7 +1,7 @@
 body {
 	background: #FFF;
 	color: #666;
-	text-align: justify;	
+	text-align: justify;
 }
 
 a {
@@ -17,6 +17,21 @@ h1 {
 	font-size: 40px;
 	text-align: center;
 	margin: 0 0 25px;
+}
+
+h2 {
+	color: #333;
+	font-size: 22px;
+	font-weight: bold;
+	margin: 0 0 25px;
+}
+
+h3 {
+	color: #333;
+	font-size: 18px;
+	font-weight: bold;
+	margin: 0 0 25px;
+	text-decoration: underline;
 }
 
 pre, xmp, code {
