@@ -46,13 +46,54 @@
 		<p>প্লাগিন ইনিশিয়ালাইজ করার সময়ই নীচের অপশনগুলোর জন্য ভ্যালু দিয়ে ডিফল্ট সেটিংসে পরিবর্তন করা যাবে।</p>
         <br/>
 
+        <h3>format:</h3>
+        <p>
+            দিন, তারিখ, বছর কোন ফরম্যাটে দেখাতে চান সেটা <strong>format</strong> এর ভ্যালুতে স্ট্রিং হিসেবে বলে দেয়া যাবে। নীচে উদাহরণ দেয়া হলোঃ
+        </p>
+        <xmp>
+        $('.bongabdo').bongabdo({
+            showSeason: true,
+            format: "DD-MM [YY]"
+        });
+        </xmp>
+        <p><h1 id="bongabdoformat">...</h1></p>
+        <p>
+            ডিফল্ট ফরম্যাট হিসেবে দেয়া আছেঃ <b>DD MM, YY</b><br><br>
+            ফরম্যাটের ভ্যালুসমুহঃ
+            <table>
+                <tbody>
+                    <tr>
+                        <td>DD</td>
+                        <td>তারিখ</td>
+                    </tr>
+                    <tr>
+                        <td>MM</td>
+                        <td>মাস</td>
+                    </tr>
+                    <tr>
+                        <td>YY</td>
+                        <td>বছর</td>
+                    </tr>
+                    <tr>
+                        <td>SS</td>
+                        <td>ঋতু</td>
+                    </tr>
+                    <tr>
+                        <td>WW</td>
+                        <td>বার</td>
+                    </tr>
+                </tbody>
+            </table>
+        </p>
+
         <h3>showSeason:</h3>
         <p>
             ঋতুর নাম সহ দেখাতে চাইলে <strong>showSeason</strong> এর ভ্যালু সেট করে দিন।
         </p>
         <xmp>
         $('.bongabdo').bongabdo({
-        	showSeason: true
+            showSeason: true,
+            format: "DD MM, YY (SS)"
         });
         </xmp>
         <p><h1 id="bongabdowithseason">...</h1></p>
@@ -63,7 +104,8 @@
         </p>
         <xmp>
         $('.bongabdo').bongabdo({
-        	showWeekDays: true
+            showWeekDays: true,
+            format: "DD MM, YY (WW)"
         });
         </xmp>
         <p><h1 id="bongabdowithday">...</h1></p>
@@ -91,12 +133,19 @@
 		$(document).ready(function(){
 			$('.bongabdo').bongabdo();
 
+            $('#bongabdoformat').bongabdo({
+                showSeason: true,
+                format: "DD-MM [YY]"
+            });
+
             $('#bongabdowithseason').bongabdo({
-                showSeason: true
+                showSeason: true,
+                format: "DD MM, YY (SS)"
             });
 
             $('#bongabdowithday').bongabdo({
-                showWeekDays: true
+                showWeekDays: true,
+                format: "DD MM, YY (WW)"
             });
 		});
 	</script>
