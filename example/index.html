@@ -57,8 +57,34 @@
         });
         </xmp>
         <p><h1 id="bongabdoformat">...</h1></p>
+
+        <p>যেমনঃ আপনি যদি শুধুমাত্র বর্তমান বাংলা মাস দেখাতে চান, তাহলে-</p>
+        <xmp>
+        $('#onlymonth').bongabdo({
+            format: "MM"
+        });
+        </xmp>
+        <p><h1 id="onlymonth">...</h1></p>
+
+        <p>কিংবা শুধুমাত্র বর্তমান বছর-</p>
+        <xmp>
+        $('#onlyyear').bongabdo({
+            format: "YY"
+        });
+        </xmp>
+        <p><h1 id="onlyyear">...</h1></p>
+
+        <p>আরো একটি উদাহরণ-</p>
+        <xmp>
+        $('.bongabdo').bongabdo({
+            format: "MM DD (YY)"
+        });
+        </xmp>
+        <p><h1 id="example">...</h1></p>
+
         <p>
-            ডিফল্ট ফরম্যাট হিসেবে দেয়া আছেঃ <b>DD MM, YY</b><br><br>
+            ডিফল্ট ফরম্যাট হিসেবে দেয়া আছেঃ <b>DD MM, YY</b><br>
+            অর্থাৎ আপনি যদি কোনো ফরম্যাট বলে না দেন, তাহলে <b><span class="bongabdo"></span></b> এই ফরম্যাটেই তারিখ, মাস, বছর দেখাবে। <br><br>
             ফরম্যাটের ভ্যালুসমুহঃ
             <table>
                 <tbody>
@@ -88,7 +114,7 @@
 
         <h3>showSeason:</h3>
         <p>
-            ঋতুর নাম সহ দেখাতে চাইলে <strong>showSeason</strong> এর ভ্যালু সেট করে দিন।
+            ঋতুর নাম সহ দেখাতে চাইলে <strong>showSeason</strong> এর ভ্যালু সেট করে দিন এবং format বলে দিন।
         </p>
         <xmp>
         $('.bongabdo').bongabdo({
@@ -98,9 +124,18 @@
         </xmp>
         <p><h1 id="bongabdowithseason">...</h1></p>
 
+        <p>শুধুমাত্র বর্তমান ঋতু দেখাতে চাইলে-</p>
+        <xmp>
+        $('#onlyseason').bongabdo({
+            showSeason: true,
+            format: "SS"
+        });
+        </xmp>
+        <p><h1 id="onlyseason">...</h1></p>
+
         <h3>showWeekDays:</h3>
         <p>
-            সপ্তাহের বার সহ দেখাতে চাইলেে <strong>showWeekDays</strong> এর ভ্যালু সেট করে দিন।
+            সপ্তাহের বার সহ দেখাতে চাইলেে <strong>showWeekDays</strong> এর ভ্যালু সেট করে দিন এবং format বলে দিন।
         </p>
         <xmp>
         $('.bongabdo').bongabdo({
@@ -109,6 +144,15 @@
         });
         </xmp>
         <p><h1 id="bongabdowithday">...</h1></p>
+
+        <p>শুধুমাত্র সপ্তাহের বর্তমান দিনটি দেখাতে চাইলে-</p>
+        <xmp>
+        $('#onlyday').bongabdo({
+            showWeekDays: true,
+            format: "WW"
+        });
+        </xmp>
+        <p><h1 id="onlyday">...</h1></p>
 
 
 	<p class="social-share">
@@ -147,6 +191,29 @@
                 showWeekDays: true,
                 format: "DD MM, YY (WW)"
             });
+
+            $('#onlymonth').bongabdo({
+                format: "MM"
+            });
+
+            $('#onlyyear').bongabdo({
+                format: "YY"
+            });
+
+            $('#example').bongabdo({
+                format: "MM DD (YY)"
+            });
+
+            $('#onlyseason').bongabdo({
+                showSeason: true,
+                format: "SS"
+            });
+
+            $('#onlyday').bongabdo({
+                showWeekDays: true,
+                format: "WW"
+            });
+
 		});
 	</script>
 </body>
