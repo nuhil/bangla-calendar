@@ -34,9 +34,17 @@
 
 		<p>তাহলে উপরোক্ত এলিমেন্ট গুলোর মধ্যে বাংলা তারিখ দেখানোর জন্য একটি পূর্ণ উদাহরণ হতে পারে নিচের মত করে। অর্থাৎ প্রথমে jQuery সংযুক্ত করুন, তারপর এই প্লাগিনকে সংযুক্ত করুন, তারপর ইনিসিয়ালাইজ করুন।</p>
 
-		<p>
-			<script src="https://gist.github.com/nuhil/e2b89c320fa5f38d5a6a.js"></script>
-		</p>
+		<xmp>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+		<script src="jquery.bongabdo.js"></script>
+
+		<script type="text/javascript">
+		  $(document).ready(function(){
+		    $('.bongabdo').bongabdo();
+		  });
+		</script>
+		</xmp>
+			
 		<p>এতে করে আপনি নিচের মত আউটপুট পাবেন</p>
 		<p><h1 class="bongabdo">...</h1></p>
 
