@@ -1,7 +1,12 @@
 (function($) {
 	$.fn.bongabdo = function(options) {
 		// To Do: Use the options to re-format return value
+		if(options && options.date) {
+			options.date = new Date(options.date);
+		}
+		
 		var settings = $.extend({
+			date: new Date(),
 			displayLanguage: "bangla",
 			dayStartsAt: "sunrise",
 			showSeason: false,
@@ -33,7 +38,7 @@
 		}
 
 		function getBanglaDateAndMonth(givenDate) {
-			givenDate = givenDate || new Date().addHours(-6);
+			givenDate = givenDate.addHours(-6);
 		
 			//Year, Date, Month for Gregorian/English Calendar
 			var gregDate = givenDate.getDate(),
@@ -101,7 +106,7 @@
 
 		this.each(function() {
 			var element = $(this);
-			var result = getBanglaDateAndMonth();
+			var result = getBanglaDateAndMonth(settings.date);
 			var dateString = settings.format;
 			dateString = dateString.replace(/DD/i, result.date.toString());
 			dateString = dateString.replace(/MM/i, result.month);
